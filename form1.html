@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+
+.forms{
+    display: flex;
+margin: 18px;
+font-size: 12px;
+padding: 10%;
+flex-direction: column;
+color: black;
+border-width: 25px;
+justify-content: space-evenly;
+background-color:cadetblue;
+font-size: medium;
+font-family:Georgia, 'Times New Roman', Times, serif;
+box-sizing: border-box;
+
+}
+
+#style1 {
+    
+    
+    width:100px;
+    height:50px;
+
+}
+
+
+
+
+
+
+</style>
+
+<body>
+    <div class="forms">
+        <h1>The Basic plan</h1>
+        <h2> Request info</h2>
+  <label for="fname">First name:</label><br>
+ <input type="text" id="fname" name=fname required><br>
+ <label for="Lname">Lastname:</label><br>
+ <input type="text" id="lname" name="lname"required ><br>
+ <label for="em">Enter your email:</label><br>
+ <input type="email" id=em name="email"><br>   
+ <label for= "pw"> Enter your password</label> 
+ <input type="password" id="pw" name="pass" required><br><br>
+ 
+ <p id="number1">Price</p>
+ <p id="number2"> Discounted Price</p>
+ 
+ <p id="number3"> Price with no Discount</p>
+ 
+ <button id="style1">
+     <a href="https://example.org">Submit</a>
+    </button>
+</div>
+
+<script>
+
+
+
+
+function Plan(name,price,space,transfer,pages,discountMonths)
+    {
+     this.name=name;
+     this.price=price;
+     this.space=space;
+     this.transfer=transfer;
+     this.pages=pages;
+     this.discountMonths=discountMonths;
+     this.calAnnual=function(percentIfDisc)
+      {
+
+                var bestPrice=this.price;
+            document.getElementById('number1').innerHTML=("price  "+ bestPrice);
+            var currDate=new Date();
+            console.log("Currentdate"+ currDate);
+            var thisMo=currDate.getMonth();
+            console.log.innerHTML=("This month" + thisMo);
+            for (var i=0; i<this.discountMonths.length;i++)
+            {
+            
+            console.log(this.discountMonths.length);
+                if (this.discountMonths[i] === thisMo)
+                {
+            
+            
+                     bestPrice= this.price* percentIfDisc;
+                    
+                
+                 break;
+                }
+
+             } 
+                return bestPrice *12;
+            console.logL= ("price with no discount" + bestPrice);
+        }
+
+    }
+
+
+     var p1 = new Plan("basic", 3.99 , 100, 1000, 10 , [0,7]);
+     var p2 = new Plan("profensional", 5.99 , 500, 5000, 100 , [0,7,11]);
+     var p3 = new Plan("ultimate", 9.99 , 2000, 20000, 500 , [0,7]);
+      
+     var annualPrice =p1.calAnnual(.80);
+     p1.calAnnual(.8);
+     document.getElementById('number2').innerHTML="Discounted Price :  " + annualPrice.toFixed(2);
+
+     var noDiscount=p1.calAnnual(1);
+     document.getElementById('number3').innerHTML="Full Price : " + noDiscount.toFixed(2);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+</script>
+</body>
+</html>
